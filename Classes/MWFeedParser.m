@@ -658,6 +658,7 @@
                         else if ([currentPath isEqualToString:@"/feed/entry/dc:creator"]) { if (processedText.length > 0) item.author = processedText; processed = YES; }
                         else if ([currentPath isEqualToString:@"/feed/entry/published"]) { if (processedText.length > 0) item.date = [NSDate dateFromInternetDateTimeString:processedText formatHint:DateFormatHintRFC3339]; processed = YES; }
                         else if ([currentPath isEqualToString:@"/feed/entry/updated"]) { if (processedText.length > 0) item.updated = [NSDate dateFromInternetDateTimeString:processedText formatHint:DateFormatHintRFC3339]; processed = YES; }
+                        else if ([currentPath isEqualToString:@"/feed/entry/media:group/media:thumbnail"]) { NSString *urlString = [currentElementAttributes objectForKey:@"url"]; if ([urlString hasSuffix:@"/mqdefault.jpg"]) { item.thumbnail = urlString; } processed = YES; }
                     }
                     
                     // Info
